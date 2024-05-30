@@ -1,0 +1,193 @@
+/* box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+/* remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* set core root defaults */
+html {
+  height: 100%;
+}
+html:focus-visible {
+  scroll-behavior: smooth;
+}
+
+/* set core body defaults */
+body {
+  height: 100%;
+  text-rendering: optimizeSpeed;
+}
+
+/* reset default link styles */
+a {
+  text-decoration: auto;
+  color: inherit;
+}
+
+/* make images easier to work with  */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove default heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+}
+
+/* larger line height for paragraphs */
+p {
+  line-height: 1.5;
+}
+
+/* container */
+.container {
+  width: min(90%, 110ch);
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: [full-width-start] minmax(2rem, 1fr) [breakout-start] minmax(0, 5ch) [content-start] min(100% - 4rem, 110ch) [content-end] minmax(0, 5ch) [breakout-end] minmax(2rem, 1fr) [full-width-end];
+  padding-top: clamp(5rem, 8vw, 7.5rem);
+}
+.container-grid > * {
+  grid-column: content;
+}
+
+.full-width {
+  grid-column: full-width;
+}
+
+.breakout {
+  grid-column: breakout;
+}
+
+/* appearence utilities */
+.none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* color utilities */
+/* layout utilities */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+:root {
+  --clr-primary-200: hsl(0, 0%, 96%);
+  --clr-primary-100: hsl(0, 0%, 100%);
+  --clr-neutral-800: hsl(225, 9%, 9%);
+  --clr-neutral-700: hsl(216, 8%, 12%);
+  --clr-neutral-600: hsl(220, 7%, 18%);
+  --clr-neutral-500: hsl(216, 9%, 23%);
+  --clr-neutral-400: hsl(216, 8%, 38%);
+  --clr-neutral-300: hsl(213, 4%, 51%);
+  --clr-neutral-200: hsl(222, 9%, 78%);
+  --clr-neutral-100: hsl(0, 0%, 89%);
+  --clr-cta-200: hsl(13, 75%, 58%);
+  --clr-cta-100: hsl(21, 86%, 67%);
+  --fs-800: 2rem;
+  --fs-700: 1.75rem;
+  --fs-600: 1.5rem;
+  --fs-500: 1.25rem;
+  --fs-400: 1rem;
+  --fs-300: 0.9375rem;
+  --fs-200: 0.875rem;
+  --fs-100: 0.8125rem;
+}
+
+/* general */
+/* font face */
+/* roboto */
+@font-face {
+  font-family: "roboto";
+  src: url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "roboto";
+  src: url("/fonts/roboto/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+/* robot slab */
+@font-face {
+  font-family: "roboto-slab";
+  src: url("/fonts/roboto-slab/RobotoSlab-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "roboto-slab";
+  src: url("/fonts/roboto-slab/RobotoSlab-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "roboto-slab";
+  src: url("/fonts/roboto-slab/RobotoSlab-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+/* roboto mono */
+@font-face {
+  font-family: "roboto-mono";
+  src: url("/fonts/roboto-mono/RobotoMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+/* buttons */
+/* navigations  */
+/* header */
+/* footer */
+/* main */
+/*# sourceMappingURL=style.css.map */
