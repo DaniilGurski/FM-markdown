@@ -2,5 +2,21 @@
 
 /* general */
 body {
-
+    font-size: $font-size-text;
+    color: $clr-primary-100;
 }
+
+.markdown {
+    &-code {
+        color: $clr-darker-text;
+    }
+    &-preview {
+        color: $clr-lighter-text;
+    }
+}
+
+.components-preview {
+    display: grid;
+    gap: 2rem;
+}
+

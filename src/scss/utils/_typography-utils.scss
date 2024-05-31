@@ -1,3 +1,14 @@
 @use "../abstracts/" as *;
 
 /* typography utilities */
+.font-ui {
+    font-family: $font-family-ui;
+}
+
+.font-markdown {
+    font-family: $font-family-markdown;
+}
+
+.font-preview {
+    font-family: $font-family-preview;
+}

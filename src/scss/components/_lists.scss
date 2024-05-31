@@ -1,0 +1,11 @@
+@use "../abstracts/" as *;
+
+.preview-list {
+    @include grid(rem(4));
+
+    &--unordered {
+        li::marker {
+            color: $clr-cta-100;
+        }
+    }
+}

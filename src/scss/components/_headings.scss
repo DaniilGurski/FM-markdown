@@ -1,0 +1,24 @@
+@use "../abstracts/" as *;
+
+/* headings */
+.heading {
+    font-family: $font-family-preview;
+}
+
+@for $n from 1 through 6 {
+    $heading-weight: $font-weight-bold;
+    $heading-color:  $clr-darker-text;
+
+    @if $n == 2 {
+        $heading-weight: $font-weight-light;
+    }
+
+    @if $n == 6 {
+        $heading-color: $clr-cta-100;
+    }
+
+    h#{$n} {
+        @include heading(nth($heading-font-sizes, $n), $heading-weight, $heading-color)
+    }
+}
+

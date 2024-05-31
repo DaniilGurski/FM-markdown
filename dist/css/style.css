@@ -11,6 +11,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 figure {
   margin: 0;
@@ -127,6 +129,34 @@ p {
   gap: var(--gap, 1rem);
 }
 
+/* typography utilities */
+.font-ui {
+  font-family: "roboto", sans-serif;
+}
+
+.font-markdown {
+  font-family: "roboto-mono", monospace;
+}
+
+.font-preview {
+  font-family: "roboto-slab", serif;
+}
+
+/* text utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-underline {
+  --underline-offset: 4px;
+  text-decoration: underline;
+  text-underline-offset: var(--underline-offset);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
 :root {
   --clr-primary-200: hsl(0, 0%, 96%);
   --clr-primary-100: hsl(0, 0%, 100%);
@@ -151,6 +181,23 @@ p {
 }
 
 /* general */
+body {
+  font-size: var(--fs-200);
+  color: var(--clr-primary-100);
+}
+
+.markdown-code {
+  color: var(--clr-neutral-500);
+}
+.markdown-preview {
+  color: var(--clr-neutral-300);
+}
+
+.components-preview {
+  display: grid;
+  gap: 2rem;
+}
+
 /* font face */
 /* roboto */
 @font-face {
@@ -186,7 +233,79 @@ p {
   font-weight: 400;
 }
 /* buttons */
+/* headings */
+.heading {
+  font-family: "roboto-slab", serif;
+}
+
+h1 {
+  font-size: var(--fs-800);
+  font-weight: 700;
+  color: var(--clr-neutral-500);
+}
+
+h2 {
+  font-size: var(--fs-700);
+  font-weight: 300;
+  color: var(--clr-neutral-500);
+}
+
+h3 {
+  font-size: var(--fs-600);
+  font-weight: 700;
+  color: var(--clr-neutral-500);
+}
+
+h4 {
+  font-size: var(--fs-500);
+  font-weight: 700;
+  color: var(--clr-neutral-500);
+}
+
+h5 {
+  font-size: var(--fs-400);
+  font-weight: 700;
+  color: var(--clr-neutral-500);
+}
+
+h6 {
+  font-size: var(--fs-300);
+  font-weight: 700;
+  color: var(--clr-cta-100);
+}
+
 /* navigations  */
+.preview-list {
+  display: grid;
+  gap: 0.25rem;
+}
+.preview-list--unordered li::marker {
+  color: var(--clr-cta-100);
+}
+
+.preview-blockquote {
+  margin: 0;
+  border-radius: 0.25rem;
+  border-left: 4px solid var(--clr-cta-100);
+  padding: 1.5rem 2rem;
+  background-color: var(--clr-primary-200);
+  color: var(--clr-neutral-500);
+}
+
+.preview-code-block {
+  display: grid;
+  margin: 0;
+  border-radius: 0.25rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--clr-primary-200);
+  color: var(--clr-neutral-500);
+}
+
+.inline-code {
+  font-family: "roboto-mono", monospace;
+  color: var(--clr-neutral-500);
+}
+
 /* header */
 /* footer */
 /* main */

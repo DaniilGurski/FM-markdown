@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.preview-blockquote {
+    margin: 0;
+    border-radius: rem(4);
+    border-left: 4px solid $clr-cta-100;
+    padding: rem(24) rem(32);
+    background-color: $clr-primary-200;
+    color: $clr-darker-text;
+}

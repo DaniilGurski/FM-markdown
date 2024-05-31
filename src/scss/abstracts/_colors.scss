@@ -17,4 +17,29 @@ $colors: (
         200: hsl(13, 75%, 58%),
         100: hsl(21, 86%, 67%),
     ),
-)
+);
+
+
+$clr-primary-200: var(--clr-primary-200);
+$clr-primary-100: var(--clr-primary-100);
+
+$clr-neutral-800: var(--clr-neutral-800);
+$clr-neutral-700: var(--clr-neutral-700);
+$clr-neutral-600: var(--clr-neutral-600);
+$clr-neutral-500: var(--clr-neutral-500);
+$clr-neutral-400: var(--clr-neutral-400);
+$clr-neutral-300: var(--clr-neutral-300);
+$clr-neutral-200: var(--clr-neutral-200);
+$clr-neutral-100: var(--clr-neutral-100);
+
+$clr-cta-200: var(--clr-cta-200);
+$clr-cta-100: var(--clr-cta-100);
+
+$clr-darker-text: $clr-neutral-500;     // for the code 
+$clr-lighter-text: $clr-neutral-300;    // for the markdown preview
+
+
+
+
+
+
