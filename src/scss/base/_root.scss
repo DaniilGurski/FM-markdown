@@ -5,4 +5,9 @@
 :root {
     @include convert_colors($colors);
     @include convert_typography($typescales);
+
+    --clr-app-bg: var(--clr-primary-100);
+    --clr-body-accent: var(--clr-neutral-500);
+    --clr-body-default:   var(--clr-neutral-300);
+    --clr-text-block-bg:  var(--clr-primary-200);
 }

@@ -4,16 +4,47 @@
 body {
     font-size: $font-size-text;
     color: $clr-primary-100;
+    background-color: $clr-app-bg;
 }
+
+
+.dark-mode {
+    --clr-app-bg: var(--clr-neutral-800);
+    --clr-body-accent: var(--clr-primary-100);
+    --clr-body-default: var(--clr-neutral-200);
+    --clr-text-block-bg: var(--clr-neutral-600);
+}
+
+
+.bg-text-block {
+    display: grid;
+    margin: 0;
+    border-radius: rem(4);
+    padding: rem(24) rem(32);
+    background-color: $clr-text-block-bg;
+    color: $clr-body-accent;
+
+    &--border {
+        border-left: 4px solid $clr-cta-100;
+    }
+}
+
+
+.inline-code {
+    font-family: $font-family-markdown;
+    color: $clr-body-accent;
+}
+
 
 .markdown {
     &-code {
-        color: $clr-darker-text;
+        color: $clr-body-accent;
     }
     &-preview {
-        color: $clr-lighter-text;
+        color: $clr-body-default;
     }
 }
+
 
 .components-preview {
     display: grid;

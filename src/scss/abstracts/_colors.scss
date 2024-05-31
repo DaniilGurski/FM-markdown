@@ -35,8 +35,10 @@ $clr-neutral-100: var(--clr-neutral-100);
 $clr-cta-200: var(--clr-cta-200);
 $clr-cta-100: var(--clr-cta-100);
 
-$clr-darker-text: $clr-neutral-500;     // for the code 
-$clr-lighter-text: $clr-neutral-300;    // for the markdown preview
+$clr-app-bg: var(--clr-app-bg);
+$clr-body-default: var(--clr-body-default);    // for the markdown preview
+$clr-body-accent: var(--clr-body-accent);      // for the code 
+$clr-text-block-bg: var(--clr-text-block-bg);
 
 
 
