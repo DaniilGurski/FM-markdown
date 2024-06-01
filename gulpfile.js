@@ -56,6 +56,12 @@ function copyImages() {
 }
 
 
+function copyFonts() {
+    return src(`${srcPath}fonts/**/*`)
+        .pipe(dest(`${destPath}/fonts`));
+}
+
+
 function convertToWebp() {
     return src([`${srcPath}img/**/*`, `!${srcPath}img/**/*.{svg,webp}`])
         .pipe(newer(`${destPath}img/`))
@@ -108,7 +114,7 @@ function buildScripts() {
 
 
 function buildHTML() {
-    return src(`${srcPath}*.html`)
+    return src(`${srcPath}**/*.html`)
         .pipe(fileInclude({
             prefix: "@@",
             basepath: "@file"
@@ -141,6 +147,7 @@ function watchTasks(done) {
 const dev = series(
     cleanDest, 
     copyImages, 
+    copyFonts,
     buildStyles,
     buildScripts, 
     buildHTML,
@@ -151,6 +158,7 @@ const dev = series(
 const prod = series(
     cleanDest, 
     copyImages, 
+    copyFonts,
     optimizeImages,
     buildStyles,
     buildScripts, 

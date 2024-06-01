@@ -2,6 +2,7 @@
 
 /* general */
 body {
+    font-family: $font-family-ui;
     font-size: $font-size-text;
     color: $clr-primary-100;
     background-color: $clr-app-bg;
@@ -46,7 +47,8 @@ body {
 }
 
 
-.components-preview {
+.showcase {
+    padding-block: 2rem;
     display: grid;
     gap: 2rem;
 }

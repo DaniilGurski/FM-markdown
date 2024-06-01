@@ -1,0 +1,31 @@
+@use "../abstracts/" as *;
+
+.file-rename {
+    @include flex();
+    align-items: center;
+
+    color: $clr-neutral-300;
+
+    &__interactable {
+        font-size: $font-size-100;
+        --gap: rem(3);
+    }
+
+    &__input {
+        // TODO: move font settings to ui container
+        font-size: $font-size-300;
+        padding-bottom: rem(5);
+
+        background: none;
+        border: none;
+        
+        color: $clr-primary-100;
+        caret-color: $clr-cta-200;
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $clr-primary-100;
+            margin-bottom: -2px;
+        }
+    }
+}
