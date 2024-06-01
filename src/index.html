@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- styles -->
-    <link rel="stylesheet" href="/dist/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- scripts -->
     <script src="" defer></script>
@@ -13,6 +13,58 @@
     <title> Markdown </title>
 </head>
 <body>
+    <header class="header">
+        <div class="header__left-corner">
+            <button class='burger-menu' aria-expanded='false' aria-controls='primary-nav' id='burger-menu'>
+                <span class='visually-hidden'>Menu</span>
+            </button>
 
+            <img class="header__logo" src="img/logo.svg" alt="logo">
+
+            <div class="file-rename">
+                <img src="/img/icon-document.svg" alt="document">
+                <div class="file-rename__interactable file-rename__interactable--foldable | grid">
+                    <label for="file-renname"> Document Name </label>
+                    <input class="file-rename__input" id="file-rename" type="text">
+                </div>
+            </div>
+        </div>
+
+        <div class="header__right-corner">
+            <button class="icon-button">
+                <span class='visually-hidden'>Delete</span>
+                <img src="img/icon-delete.svg" alt="delete">
+            </button>
+
+            <button class="button button--icon">
+                <img src="/img/icon-save.svg" alt="save">
+                <span> Save Changes </span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="aside | bg-neutral-600">
+        <img src="img/logo.svg" alt="logo">
+
+        <span class="clr-neutral-300"> My Documents </span>
+
+        <button class="button"> + New Document </button>
+
+        <div class="file-rename">
+            <img src="/img/icon-document.svg" alt="document">
+            <div class="file-rename__interactable | grid">
+                <label for="file-renname"> 01 April 2022 </label>
+                <input class="file-rename__input" id="file-rename" type="text" value="untitled-document.md">
+            </div>
+        </div>
+
+        <div class="file-rename">
+            <img src="/img/icon-document.svg" alt="document">
+            <div class="file-rename__interactable | grid">
+                <label for="file-renname"> 01 April 2022 </label>
+                <input class="file-rename__input" id="file-rename" type="text" value="welcome.md">
+            </div>
+        </div>
+    </aside>
 </body>
 </html>
