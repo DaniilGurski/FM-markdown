@@ -3,17 +3,35 @@
 .file-rename {
     @include flex();
     align-items: center;
+    
+    font-weight: $font-weight-light;
 
     color: $clr-neutral-300;
 
     &__interactable {
         font-size: $font-size-100;
         --gap: rem(3);
+
+        &--foldable {
+            > label {
+                font-size: $font-size-100;
+                display: none;
+            }
+
+            @include mq-min($small-screen-size) {
+                > label {
+                    display: block;
+                }
+            }
+        }
     }
 
     &__input {
-        // TODO: move font settings to ui container
+        width: clamp(rem(84), 14vw, rem(128));
+
+        font-weight: $font-weight-regular;
         font-size: $font-size-300;
+
         padding-bottom: rem(5);
 
         background: none;

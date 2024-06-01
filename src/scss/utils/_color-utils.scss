@@ -1,6 +1,14 @@
 @use "../abstracts/" as *;
 
 /* color utilities */
-.bg-600 {
+.clr-neutral-400 {
+    color: $clr-neutral-400;
+}
+
+.clr-neutral-300 {
+    color: $clr-neutral-300;
+}
+
+.bg-neutral-600 {
     background-color: $clr-neutral-600;
 }

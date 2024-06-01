@@ -5,7 +5,7 @@
     font-size: $font-size-300;
     @include flex(rem(8));
     align-items: center;
-    padding: rem(12) rem(16);
+    padding: rem(12) rem(43);
 
     background-color: $clr-cta-200;
     color: currentColor;
@@ -19,8 +19,41 @@
         background-color: $clr-cta-100;
     }
 
+    &--icon {
+        padding: rem(12) rem(16);
 
-    &--iconless {
-        padding-inline: rem(43);
+        // button text
+        > span {
+            display: none;
+        }
+
+
+        @include mq-min($medium-screen-size) {
+            > span {
+                display: block;
+            }
+        }
+    }
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.burger-menu {
+    --_burger-size: #{rem(72)};
+    
+    background: $clr-neutral-500 url("/img/icon-menu.svg") no-repeat center;
+
+    width: var(--_burger-size);
+    aspect-ratio: 1;
+
+    border: none;
+    cursor: pointer;
+
+    &[aria-expanded=true] {
+        background: url("/img/icon-close.svg") no-repeat center;;
     }
 }

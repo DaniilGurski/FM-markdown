@@ -1,3 +1,31 @@
 @use "../abstracts/" as *;
 
 /* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: rem(16);
+    
+    font-size: $font-size-300;
+
+    background-color: $clr-neutral-600;
+
+    > * {
+        @include flex(rem(24));
+        align-items: center;
+    }
+
+    &__logo {
+        display: none;
+    }
+
+    @include mq-min($medium-screen-size) {
+        &__file-rename {
+            padding-inline: rem(24);
+            border-left: 1px solid $clr-neutral-400;
+        }
+        &__logo {
+            display: block;
+        }
+    }
+}
