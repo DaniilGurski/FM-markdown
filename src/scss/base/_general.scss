@@ -1,7 +1,18 @@
 @use "../abstracts/" as *;
 
 /* general */
+html {
+    height: 100%;
+}
+
+
 body {
+    display: flex;
+    align-items: start;
+    flex-direction: row-reverse;
+
+    overflow-x: hidden;
+
     font-family: $font-family-ui;
     font-size: $font-size-300;
     color: $clr-primary-100;
@@ -14,6 +25,20 @@ body {
     --clr-body-accent: var(--clr-primary-100);
     --clr-body-default: var(--clr-neutral-200);
     --clr-text-block-bg: var(--clr-neutral-600);
+}
+
+
+.app-main {
+    height: 100vh;
+    flex: 1;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+.preview {
+    padding: rem(23);
 }
 
 
@@ -43,6 +68,41 @@ body {
     }
     &-preview {
         color: $clr-body-default;
+    }
+    &-section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: $clr-primary-200;
+        color: $clr-neutral-300;
+        padding: rem(12) rem(16);
+
+
+        &__toggle-preview {
+            width: rem(24);
+            height: rem(24);
+
+            padding: 0;
+
+            background: url("/img/icon-show-preview.svg") no-repeat center;
+            background-size: contain;
+
+            border: none;
+            cursor: pointer;
+
+
+            &[data-toggle=hide] {
+                background: url("/img/icon-hide-preview.svg") no-repeat center;
+                background-size: contain;
+            }
+        }
+
+
+        > span {
+            letter-spacing: 2px;
+        }
+
     }
 }
 

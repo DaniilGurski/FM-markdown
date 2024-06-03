@@ -27,8 +27,6 @@
     }
 
     &__input {
-        width: clamp(rem(84), 14vw, rem(128));
-
         font-weight: $font-weight-regular;
         font-size: $font-size-300;
 
@@ -45,5 +43,22 @@
             border-bottom: 2px solid $clr-primary-100;
             margin-bottom: -2px;
         }
+    }
+}
+
+.markdown-input-area {
+    font-size: $font-size-200;
+
+    width: 100%;
+    height: 100%;
+
+    resize: none;
+    border: none;
+
+    padding: rem(8) rem(16);
+
+
+    &:focus {
+        outline: none;
     }
 }

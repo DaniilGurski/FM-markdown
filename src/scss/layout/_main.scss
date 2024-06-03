@@ -1,3 +1,19 @@
 @use "../abstracts/" as *;
 
 /* main */
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    // height: 100vh;
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__section:first-child {
+        border-right: 2px solid $clr-neutral-100;
+    }
+}
+

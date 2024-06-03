@@ -1,5 +1,31 @@
 @use "../abstracts/" as *;
 
 .aside {
-    padding-block: 2rem;
+    display: none;
+    justify-content: start;
+    align-content: space-between;
+
+    min-height: 100vh;
+
+    padding: rem(27) rem(24);
+
+
+    &__top {
+        --gap: #{rem(27)};
+    }
+
+    &__main {
+        --gap: #{rem(24)};
+    }
+
+    &--opened {
+        @include grid(rem(27));
+    }
+
+
+    @include mq-min($medium-screen-size) {
+        &__logo {
+            display: none;
+        }
+    }
 }

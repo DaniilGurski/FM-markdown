@@ -2,8 +2,12 @@
 
 /* header */
 .header {
+    container-type: inline-size;
+
     display: flex;
     justify-content: space-between;
+    flex: 1;
+
     padding-right: rem(16);
     
     font-size: $font-size-300;
@@ -19,7 +23,11 @@
         display: none;
     }
 
-    @include mq-min($medium-screen-size) {
+    &__file-rename-input {
+        width: clamp(rem(84), 14vw, rem(128));
+    }
+
+    @container (inline-size >= #{rem($medium-screen-size)}) {
         &__file-rename {
             padding-inline: rem(24);
             border-left: 1px solid $clr-neutral-400;

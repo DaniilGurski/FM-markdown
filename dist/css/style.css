@@ -102,7 +102,15 @@ p {
 }
 
 /* general */
+html {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  align-items: start;
+  flex-direction: row-reverse;
+  overflow-x: hidden;
   font-family: "roboto", sans-serif;
   font-size: var(--fs-300);
   color: var(--clr-primary-100);
@@ -114,6 +122,17 @@ body {
   --clr-body-accent: var(--clr-primary-100);
   --clr-body-default: var(--clr-neutral-200);
   --clr-text-block-bg: var(--clr-neutral-600);
+}
+
+.app-main {
+  height: 100vh;
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.preview {
+  padding: 1.4375rem;
 }
 
 .bg-text-block {
@@ -139,6 +158,30 @@ body {
 .markdown-preview {
   color: var(--clr-body-default);
 }
+.markdown-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--clr-primary-200);
+  color: var(--clr-neutral-300);
+  padding: 0.75rem 1rem;
+}
+.markdown-section-header__toggle-preview {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  background: url("/img/icon-show-preview.svg") no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+.markdown-section-header__toggle-preview[data-toggle=hide] {
+  background: url("/img/icon-hide-preview.svg") no-repeat center;
+  background-size: contain;
+}
+.markdown-section-header > span {
+  letter-spacing: 2px;
+}
 
 .showcase {
   padding-block: 2rem;
@@ -148,6 +191,11 @@ body {
 
 /* font face */
 /* roboto */
+@font-face {
+  font-family: "roboto";
+  src: url("/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
 @font-face {
   font-family: "roboto";
   src: url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
@@ -260,6 +308,26 @@ body {
   font-family: "roboto-mono", monospace;
 }
 
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.line-height {
+  line-height: 1.5rem;
+}
+
 /* text utilities */
 .text-center {
   text-align: center;
@@ -277,10 +345,11 @@ body {
 
 /* buttons */
 .button {
-  font-size: var(--fs-300);
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  width: fit-content;
+  font-size: var(--fs-300);
   padding: 0.75rem 2.6875rem;
   background-color: var(--clr-cta-200);
   color: currentColor;
@@ -318,7 +387,7 @@ body {
   cursor: pointer;
 }
 .burger-menu[aria-expanded=true] {
-  background: url("/img/icon-close.svg") no-repeat center;
+  background: var(--clr-neutral-500) url("/img/icon-close.svg") no-repeat center;
 }
 
 /* headings */
@@ -431,7 +500,6 @@ h6 {
   }
 }
 .file-rename__input {
-  width: clamp(5.25rem, 14vw, 8rem);
   font-weight: 400;
   font-size: var(--fs-300);
   padding-bottom: 0.3125rem;
@@ -446,10 +514,24 @@ h6 {
   margin-bottom: -2px;
 }
 
+.markdown-input-area {
+  font-size: var(--fs-200);
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.markdown-input-area:focus {
+  outline: none;
+}
+
 /* header */
 .header {
+  container-type: inline-size;
   display: flex;
   justify-content: space-between;
+  flex: 1;
   padding-right: 1rem;
   font-size: var(--fs-300);
   background-color: var(--clr-neutral-600);
@@ -462,7 +544,10 @@ h6 {
 .header__logo {
   display: none;
 }
-@media (min-width: 48em) {
+.header__file-rename-input {
+  width: clamp(5.25rem, 14vw, 8rem);
+}
+@container (inline-size >= 48rem) {
   .header__file-rename {
     padding-inline: 1.5rem;
     border-left: 1px solid var(--clr-neutral-400);
@@ -474,7 +559,38 @@ h6 {
 
 /* footer */
 /* main */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.main__section {
+  display: flex;
+  flex-direction: column;
+}
+.main__section:first-child {
+  border-right: 2px solid var(--clr-neutral-100);
+}
+
 .aside {
-  padding-block: 2rem;
+  display: none;
+  justify-content: start;
+  align-content: space-between;
+  min-height: 100vh;
+  padding: 1.6875rem 1.5rem;
+}
+.aside__top {
+  --gap: 1.6875rem;
+}
+.aside__main {
+  --gap: 1.5rem;
+}
+.aside--opened {
+  display: grid;
+  gap: 1.6875rem;
+}
+@media (min-width: 48em) {
+  .aside__logo {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
