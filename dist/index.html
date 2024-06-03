@@ -5,66 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- scripts -->
-    <script src="" defer></script>
+    <script src="js/menu.bundle.js" defer></script>
     
     <title> Markdown </title>
 </head>
-<body>
-    <header class="header">
-        <div class="header__left-corner">
-            <button class='burger-menu' aria-expanded='false' aria-controls='primary-nav' id='burger-menu'>
-                <span class='visually-hidden'>Menu</span>
-            </button>
+<body> 
 
-            <img class="header__logo" src="img/logo.svg" alt="logo">
+    <div class="app-main">
+        <header class="header">
+            <div class="header__left-corner">
+                <button class='burger-menu' aria-expanded='false' aria-controls='primary-nav' id='burger-menu'>
+                    <span class='visually-hidden'>Menu</span>
+                </button>
 
-            <div class="file-rename">
-                <img src="/img/icon-document.svg" alt="document">
-                <div class="file-rename__interactable file-rename__interactable--foldable | grid">
-                    <label for="file-renname"> Document Name </label>
-                    <input class="file-rename__input" id="file-rename" type="text">
+                <img class="header__logo" src="img/logo.svg" alt="logo">
+
+                <div class="file-rename">
+                    <img src="img/icon-document.svg" alt="document">
+                    <div class="file-rename__interactable file-rename__interactable--foldable | grid">
+                        <label for="file-renname"> Document Name </label>
+                        <input class="header__file-rename-input file-rename__input" id="file-rename" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="header__right-corner">
+                <button class="icon-button">
+                    <span class='visually-hidden'>Delete</span>
+                    <img src="img/icon-delete.svg" alt="delete">
+                </button>
+
+                <button class="button button--icon">
+                    <img src="/img/icon-save.svg" alt="save">
+                    <span> Save Changes </span>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="main__section input-section">
+                <header class="markdown-section-header">
+                    <span class="letter-spacing font-weight-medium"> MARKDOWN </span>
+    
+                    <button class="markdown-section-header__toggle-preview">
+                        <span class="visually-hidden"> Toggle preview </span>
+                    </button>
+                </header>
+
+                <textarea class="markdown-input-area font-markdown" id="markdown-input-area"></textarea>
+            </section>
+    
+            <section class="main__section preview-section">
+                <header class="markdown-section-header">
+                    <span class="letter-spacing font-weight-medium"> PREVIEW </span>
+    
+                    <button class="markdown-section-header__toggle-preview" data-toggle="hide">
+                        <span class="visually-hidden"> Toggle preview </span>
+                    </button>
+                </header>
+
+                <div class="preview">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <aside class="aside | bg-neutral-600" id="aside-panel">
+        
+        <div class="aside__top | grid">
+
+            <img class="aside__logo" src="img/logo.svg" alt="logo">
+
+            <div class="aside__main | grid">
+                <span class="clr-neutral-300"> MY DOCUMENTS </span>
+
+                <button class="button"> + New Document </button>
+
+                <div class="file-rename">
+                    <img src="/img/icon-document.svg" alt="document">
+                    <div class="file-rename__interactable | grid">
+                        <label for="file-renname"> 01 April 2022 </label>
+                        <input class="file-rename__input" id="file-rename" type="text" value="untitled-document.md">
+                    </div>
+                </div>
+
+                <div class="file-rename">
+                    <img src="/img/icon-document.svg" alt="document">
+                    <div class="file-rename__interactable | grid">
+                        <label for="file-renname"> 01 April 2022 </label>
+                        <input class="file-rename__input" id="file-rename" type="text" value="welcome.md">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="header__right-corner">
-            <button class="icon-button">
-                <span class='visually-hidden'>Delete</span>
-                <img src="img/icon-delete.svg" alt="delete">
-            </button>
-
-            <button class="button button--icon">
-                <img src="/img/icon-save.svg" alt="save">
-                <span> Save Changes </span>
-            </button>
-        </div>
-    </header>
-
-    <aside class="aside | bg-neutral-600">
-        <img src="img/logo.svg" alt="logo">
-
-        <span class="clr-neutral-300"> My Documents </span>
-
-        <button class="button"> + New Document </button>
-
-        <div class="file-rename">
-            <img src="/img/icon-document.svg" alt="document">
-            <div class="file-rename__interactable | grid">
-                <label for="file-renname"> 01 April 2022 </label>
-                <input class="file-rename__input" id="file-rename" type="text" value="untitled-document.md">
-            </div>
+        <div class="toggle-component">
+            <img src="/img/icon-dark-mode.svg" alt="dark mode">
+            <!-- TOOD: Snippet -->
+            <input class="toggle" id="mode-switch" type="checkbox" aria-label="change to dark mode">
+            <img src="/img/icon-light-mode.svg" alt="light mode">
         </div>
 
-        <div class="file-rename">
-            <img src="/img/icon-document.svg" alt="document">
-            <div class="file-rename__interactable | grid">
-                <label for="file-renname"> 01 April 2022 </label>
-                <input class="file-rename__input" id="file-rename" type="text" value="welcome.md">
-            </div>
-        </div>
     </aside>
 </body>
 </html>
