@@ -23,6 +23,8 @@ const webpackConfig = {
     mode: isDev ? "development" : "production", 
     entry: {
         main: "/src/js/main.js", 
+        menu: "/src/js/menu.js",
+        preview: "/src/js/preview.js",
     },
 
     output: {
@@ -58,6 +60,7 @@ function copyImages() {
 
 function copyFonts() {
     return src(`${srcPath}fonts/**/*`)
+        .pipe(newer(`${destPath}fonts/`))
         .pipe(dest(`${destPath}/fonts`));
 }
 
@@ -137,10 +140,11 @@ function browserSyncServer(done) {
 function watchTasks(done) {
     watch([`${srcPath}scss/**/*.scss`], buildStyles);
     watch([`${srcPath}js/**/*.js`], buildScripts).on("change", browserSync.reload);
+    watch([`${srcPath}**/*.html`], buildHTML).on("change", browserSync.reload);
 
     watch([`${srcPath}img`], optimizeImages)
+    watch([`${srcPath}fonts/**/*`], copyFonts)
     
-    watch([`${srcPath}**/*.html`], buildHTML).on("change", browserSync.reload);
 }
 
 
