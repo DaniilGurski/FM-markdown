@@ -22,7 +22,7 @@ const destPath    = "dist/";
 const webpackConfig = {
     mode: isDev ? "development" : "production", 
     entry: {
-        main: "/src/js/main.js", 
+        markdown: "/src/js/markdown.js", 
         menu: "/src/js/menu.js",
         preview: "/src/js/preview.js",
     },
