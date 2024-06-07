@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.preview {
+    --gap: #{rem(24)};
+
+    width: min(rem(720), 100%); 
+    margin-inline: auto;
+
+    padding: rem(18);   
+}

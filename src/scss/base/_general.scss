@@ -29,26 +29,27 @@ body {
 
 
 .app-main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+
     height: 100vh;
     flex: 1;
 
-    display: grid;
-    grid-template-rows: auto 1fr;
-}
+    overflow-y: scroll;
 
-
-.preview {
-    padding: rem(23);
 }
 
 
 .bg-text-block {
     display: grid;
+
     margin: 0;
-    border-radius: rem(4);
     padding: rem(24) rem(32);
+
     background-color: $clr-text-block-bg;
     color: $clr-body-accent;
+
+    border-radius: rem(4);
 
     &--border {
         border-left: 4px solid $clr-cta-100;
@@ -63,12 +64,6 @@ body {
 
 
 .markdown {
-    &-code {
-        color: $clr-body-accent;
-    }
-    &-preview {
-        color: $clr-body-default;
-    }
     &-section-header {
         display: flex;
         align-items: center;
@@ -95,6 +90,16 @@ body {
             &[data-toggle=hide] {
                 background: url("/img/icon-hide-preview.svg") no-repeat center;
                 background-size: contain;
+            }
+
+
+            &[data-from=input] {
+                visibility: visible;
+
+                // hide toggle from input section on larger devices
+                @include mq-min($medium-screen-size) {
+                    visibility: hidden;
+                }
             }
         }
 

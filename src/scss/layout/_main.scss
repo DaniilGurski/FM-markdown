@@ -3,17 +3,38 @@
 /* main */
 .main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    // height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
     &__section {
         display: flex;
         flex-direction: column;
-    }
+        grid-column: span 2;
 
-    &__section:first-child {
-        border-right: 2px solid $clr-neutral-100;
+        // input section 
+        &:first-child {
+            line-height: $line-spacing;
+            border-right: 2px solid $clr-neutral-100;
+        }
+
+        // preview section
+        &:last-child {
+            display: none; 
+        }
+
+        &[data-closed] {
+            display: none;
+        }
+
+        &[data-opened] {
+            display: block;
+        }
+
+
+        @include mq-min($medium-screen-size) {
+            &:last-child {
+                display: block; 
+            }
+        };
     }
 }
 
