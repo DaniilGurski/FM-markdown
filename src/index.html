@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- scripts -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <script src="js/markdown.bundle.js" type="module" defer></script>
     <script src="js/menu.bundle.js" defer></script>
+    <script src="js/preview.bundle.js" defer></script>
     
     <title> Markdown </title>
 </head>
@@ -46,28 +49,28 @@
         </header>
 
         <main class="main">
-            <section class="main__section input-section">
+            <section class="main__section | clr-body-accent" id="input-section">
                 <header class="markdown-section-header">
-                    <span class="letter-spacing font-weight-medium"> MARKDOWN </span>
+                    <span class="font-weight-medium"> MARKDOWN </span>
     
-                    <button class="markdown-section-header__toggle-preview">
+                    <button class="markdown-section-header__toggle-preview" data-toggle="show" data-from="input">
                         <span class="visually-hidden"> Toggle preview </span>
                     </button>
                 </header>
 
-                <textarea class="markdown-input-area font-markdown" id="markdown-input-area"></textarea>
+                <textarea class="markdown-input-area font-markdown | font-size-200" id="markdown-input-area"></textarea>
             </section>
-    
-            <section class="main__section preview-section">
+            
+            <section class="main__section | clr-body-default" id="preview-section">
                 <header class="markdown-section-header">
-                    <span class="letter-spacing font-weight-medium"> PREVIEW </span>
-    
-                    <button class="markdown-section-header__toggle-preview" data-toggle="hide">
+                    <span class="font-weight-medium"> PREVIEW </span>
+                    
+                    <button class="markdown-section-header__toggle-preview" data-toggle="hide" data-from="preview">
                         <span class="visually-hidden"> Toggle preview </span>
                     </button>
                 </header>
 
-                <div class="preview">
+                <div class="preview | grid | font-preview | font-size-200" id="preview-box">
                 </div>
             </section>
         </main>
@@ -110,5 +113,7 @@
         </div>
 
     </aside>
+
+
 </body>
 </html>
