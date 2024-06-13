@@ -8,5 +8,6 @@ burger.addEventListener("click", () => {
         burger.setAttribute("aria-expanded", "true")
     }
 
+    asidePanel.setAttribute("aria-hidden", burger.getAttribute("aria-expanded") === "true" ? "false" : "true");
     asidePanel.classList.toggle("aside--opened")
 });

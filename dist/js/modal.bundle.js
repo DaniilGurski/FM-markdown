@@ -9,13 +9,79 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/markdown.js":
-/*!****************************!*\
-  !*** ./src/js/markdown.js ***!
-  \****************************/
+/***/ "./src/js/modal.js":
+/*!*************************!*\
+  !*** ./src/js/modal.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { marked }     = __webpack_require__(/*! marked */ \"./node_modules/marked/lib/marked.cjs\");\r\n\r\nconst main           = document.querySelector(\".main\");\r\nconst inputSection   = main.querySelector(\"#input-section\");\r\nconst previewSection = main.querySelector(\"#preview-section\");\r\nconst markdownInput  = inputSection.querySelector(\"#markdown-input-area\");\r\nconst previewBox     = previewSection.querySelector(\"#preview-box\");\r\nconst markdownStyledElements = {\r\n    \"ol\": [\"preview-list\"],\r\n    \"ul\": [\"preview-list\", \"preview-list--unordered\"],\r\n    \"blockquote\": [\"preview-blockquote\", \"bg-text-block\", \"bg-text-block--border\", \"font-weight-bold\"], \r\n    \"a\": [\"text-underline\"],\r\n    \"pre\": [\"preview-code\", \"bg-text-block\"],\r\n    \"code\": [\"inline-code\"]\r\n}\r\n\r\n\r\nfunction styleMarkdown(container) {\r\n    const markdownElements = Array.from(container.children);\r\n\r\n    markdownElements.forEach(element => {\r\n        const tagName = element.tagName.toLocaleLowerCase();\r\n        console.log(tagName)\r\n\r\n        if (Object.keys(markdownStyledElements).includes(tagName)) {\r\n            const classNames = markdownStyledElements[tagName]; \r\n            classNames.forEach(className => {\r\n                element.classList.add(className)\r\n            });\r\n\r\n        }\r\n        if (element.hasChildNodes()) {\r\n            styleMarkdown(element);\r\n        }\r\n    });\r\n}\r\n\r\n\r\n// function renderMarkdown(textLines) {\r\n//     previewBox.innerHTML = \"\";\r\n\r\n//     textLines.forEach(textLine => {\r\n//         const markdownElement = marked.parse(textLine);\r\n//         previewBox.insertAdjacentHTML(\"beforeend\", markdownElement)\r\n//         styleMarkdown();\r\n//     })\r\n// }\r\n\r\n\r\nfunction writeDownLines() {\r\n    previewBox.innerHTML = marked.parse(markdownInput.value);\r\n    styleMarkdown(previewBox);\r\n}\r\n\r\n\r\nmarkdownInput.addEventListener(\"input\", writeDownLines);\r\n\n\n//# sourceURL=webpack://gulp-startup/./src/js/markdown.js?");
+eval("const { createNewDocument } = __webpack_require__(/*! ./modules/create-document */ \"./src/js/modules/create-document.js\");\r\nconst { getDocumentStatus } = __webpack_require__(/*! ./modules/doc-status */ \"./src/js/modules/doc-status.js\");\r\nconst { updatePanelList } = __webpack_require__(/*! ./modules/update-doc-list */ \"./src/js/modules/update-doc-list.js\");\r\nconst { getDocumentName } = __webpack_require__(/*! ./modules/save-doc */ \"./src/js/modules/save-doc.js\");\r\n\r\nconst removeDocumentBtn = document.querySelector(\"#remove-document-btn\");\r\nconst modal = document.querySelector(\"#modal\");\r\nconst closeModalBtns = modal.querySelectorAll(\"[data-close-modal]\");\r\nconst confirmDocumentRemoval = modal.querySelector(\"#confirm-doc-removal\");\r\n\r\nremoveDocumentBtn.addEventListener(\"click\", () => {\r\n    const currentDocumentName = document.querySelector(\"#document-name\").value; \r\n    const currentDocumentNameDisplay = modal.querySelector(\"#remove-document-name\");\r\n\r\n    currentDocumentNameDisplay.innerText = `'${getDocumentName()}'`;\r\n    modal.showModal();\r\n});\r\n\r\n\r\ncloseModalBtns.forEach(button => {\r\n    button.addEventListener(\"click\", () => {\r\n        modal.close();\r\n    })\r\n});\r\n\r\n\r\nconfirmDocumentRemoval.addEventListener(\"click\", () => {\r\n    const currentDocStatus = getDocumentStatus(); \r\n\r\n    if (currentDocStatus === \"saved\") {\r\n        const currentDocIndex = parseInt(localStorage.getItem(\"current-markdown-index\")); \r\n        const documents = JSON.parse(localStorage.getItem(\"markdown-doc-array\")); \r\n\r\n        documents.splice(currentDocIndex, 1);\r\n\r\n        localStorage.setItem(\"markdown-doc-array\", JSON.stringify(documents));\r\n        updatePanelList(documents);\r\n    }\r\n\r\n    createNewDocument();\r\n});\r\n\r\n\n\n//# sourceURL=webpack://gulp-startup/./src/js/modal.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/create-document.js":
+/*!*******************************************!*\
+  !*** ./src/js/modules/create-document.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createNewDocument: () => (/* binding */ createNewDocument)\n/* harmony export */ });\n/* harmony import */ var _doc_status__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./doc-status */ \"./src/js/modules/doc-status.js\");\n\r\n\r\nconst appContainer  = document.querySelector(\"#app-container\");\r\nconst primaryHeader = appContainer.querySelector(\"#primary-header\"); \r\nconst main          = appContainer.querySelector(\"#main\");\r\n\r\nconst documentName = primaryHeader.querySelector(\".document-name-editor__input\");\r\nconst markdownInput  = appContainer.querySelector(\"#markdown-input-area\");\r\nconst previewBox     = appContainer.querySelector(\"#preview-box\");\r\n\r\n\r\nfunction createNewDocument() {\r\n    console.log(\"creating new document ...\")\r\n    ;(0,_doc_status__WEBPACK_IMPORTED_MODULE_0__.updateDocumentStatus)(\"new\");\r\n    markdownInput.value = \"\";\r\n    documentName.value  = \"\";\r\n    previewBox.innerHTML = \"\";\r\n}\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/create-document.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/doc-status.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/doc-status.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getDocumentStatus: () => (/* binding */ getDocumentStatus),\n/* harmony export */   updateDocumentStatus: () => (/* binding */ updateDocumentStatus)\n/* harmony export */ });\nconst appContainer = document.querySelector(\"#app-container\");\r\n\r\n/**\r\n * Update data-new in appContainer either to true or false\r\n * @param {string} status - saved / new\r\n*/\r\nfunction updateDocumentStatus(status) {\r\n    if (![\"saved\", \"new\"].includes(status)) {\r\n        throw new Error(\"Invalid status. Status must be either 'save' or 'new'\");\r\n    }\r\n\r\n    appContainer.setAttribute(\"data-new-doc\", status)\r\n    localStorage.setItem(\"current-markdown-status\", status);\r\n}\r\n\r\nfunction getDocumentStatus() {\r\n    return localStorage.getItem(\"current-markdown-status\") || \"new\";\r\n}\r\n\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/doc-status.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/load-document.js":
+/*!*****************************************!*\
+  !*** ./src/js/modules/load-document.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   loadDocument: () => (/* binding */ loadDocument)\n/* harmony export */ });\n/* harmony import */ var _create_document__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./create-document */ \"./src/js/modules/create-document.js\");\n/* harmony import */ var _markdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./markdown */ \"./src/js/modules/markdown.js\");\n\r\n\r\n\r\nconst appContainer  = document.querySelector(\"#app-container\");\r\nconst primaryHeader = appContainer.querySelector(\"#primary-header\"); \r\n\r\nconst documentNameElement   = primaryHeader.querySelector(\".document-name-editor__input\");\r\nconst markdownInputElement  = appContainer.querySelector(\"#markdown-input-area\");\r\nconst previewBox            = appContainer.querySelector(\"#preview-box\");\r\n\r\n\r\nfunction loadDocument(documentIndex) {\r\n    const documents = JSON.parse(localStorage.getItem(\"markdown-doc-array\")); \r\n\r\n    if (documents.length <= 0) {\r\n        (0,_create_document__WEBPACK_IMPORTED_MODULE_0__.createNewDocument)()\r\n        return \r\n    }\r\n\r\n    const {documentName, content} = documents[documentIndex];\r\n\r\n    appContainer.dataset.newDoc = \"saved\"; \r\n    localStorage.setItem(\"current-markdown-status\", \"saved\");\r\n\r\n    documentNameElement.value = documentName;\r\n    markdownInputElement.value = content;\r\n    (0,_markdown__WEBPACK_IMPORTED_MODULE_1__.formatToMarkdown)();\r\n\r\n    localStorage.setItem(\"current-markdown-index\", documentIndex);\r\n}\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/load-document.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/markdown.js":
+/*!************************************!*\
+  !*** ./src/js/modules/markdown.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   formatToMarkdown: () => (/* binding */ formatToMarkdown),\n/* harmony export */   styleMarkdown: () => (/* binding */ styleMarkdown)\n/* harmony export */ });\nconst { marked }     = __webpack_require__(/*! marked */ \"./node_modules/marked/lib/marked.cjs\");\r\nconst main           = document.querySelector(\".main\");\r\nconst inputSection   = main.querySelector(\"#input-section\");\r\nconst previewSection = main.querySelector(\"#preview-section\");\r\nconst markdownInput  = inputSection.querySelector(\"#markdown-input-area\");\r\nconst previewBox     = previewSection.querySelector(\"#preview-box\");\r\nconst markdownStyledElements = {\r\n    \"ol\": [\"preview-list\"],\r\n    \"ul\": [\"preview-list\", \"preview-list--unordered\"],\r\n    \"blockquote\": [\"preview-blockquote\", \"bg-text-block\", \"bg-text-block--border\", \"font-weight-bold\"], \r\n    \"a\": [\"text-underline\"],\r\n    \"pre\": [\"preview-code\", \"bg-text-block\"],\r\n    \"code\": [\"inline-code\"]\r\n}\r\n\r\n\r\nmarked.setOptions({\r\n    breaks: true,\r\n})\r\n\r\n\r\nfunction styleMarkdown(container) {\r\n    const markdownElements = Array.from(container.children);\r\n\r\n    markdownElements.forEach(element => {\r\n        const tagName = element.tagName.toLocaleLowerCase();\r\n\r\n        if (Object.keys(markdownStyledElements).includes(tagName)) {\r\n            const classNames = markdownStyledElements[tagName]; \r\n            classNames.forEach(className => {\r\n                element.classList.add(className)\r\n            });\r\n        };\r\n        \r\n        if (element.hasChildNodes()) {\r\n            styleMarkdown(element);\r\n        };\r\n    });\r\n}\r\n\r\n\r\nfunction formatToMarkdown() {\r\n    previewBox.innerHTML = marked.parse(markdownInput.value);\r\n    styleMarkdown(previewBox);\r\n}\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/markdown.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/save-doc.js":
+/*!************************************!*\
+  !*** ./src/js/modules/save-doc.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   appendNewDocument: () => (/* binding */ appendNewDocument),\n/* harmony export */   getDocumentData: () => (/* binding */ getDocumentData),\n/* harmony export */   getDocumentName: () => (/* binding */ getDocumentName),\n/* harmony export */   saveDocumentChanges: () => (/* binding */ saveDocumentChanges)\n/* harmony export */ });\n/* harmony import */ var _doc_status__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./doc-status */ \"./src/js/modules/doc-status.js\");\n/* harmony import */ var _update_doc_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./update-doc-list */ \"./src/js/modules/update-doc-list.js\");\n\r\n\r\n\r\nconst primaryHeader = document.querySelector(\"#primary-header\");\r\nconst main          = document.querySelector(\"#main\");\r\n\r\nconst markdownInputArea = main.querySelector(\"#markdown-input-area\");\r\nconst monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\r\n\r\n\r\nfunction getDocumentName() {\r\n    const documentNameString = primaryHeader.querySelector(\".document-name-editor__input\").value;\r\n\r\n    return (documentNameString !== \"\") ? `${documentNameString}` : \"untitled\";\r\n}\r\n\r\n\r\nfunction getDocumentData() {\r\n    const creationDate  = new Date();\r\n    const creationDay   = (creationDate.getDate()).toString().padStart(2, \"0\");\r\n    const creationMonth = creationDate.getMonth()\r\n    const creationYear  = creationDate.getFullYear();\r\n    const formatedDate  = `${creationDay} ${monthNames[creationMonth]} ${creationYear}`;\r\n    const markdownCode  = markdownInputArea.value;\r\n\r\n    const documentData  = {\r\n        createdAt: formatedDate,\r\n        documentName: getDocumentName(),\r\n        content:   markdownCode,\r\n    };\r\n\r\n    // add .md extention if needed\r\n    if (!documentData.documentName.endsWith(\".md\")) {\r\n        documentData.documentName += \".md\";\r\n    }\r\n\r\n    return documentData;\r\n}\r\n\r\nfunction saveDocumentChanges() {\r\n    let documents = JSON.parse(localStorage.getItem(\"markdown-doc-array\")) || [];\r\n\r\n    const currentDocumentIndex = parseInt(localStorage.getItem(\"current-markdown-index\")); \r\n\r\n    documents.splice(currentDocumentIndex, 1);\r\n    documents.unshift(getDocumentData());\r\n\r\n    localStorage.setItem(\"markdown-doc-array\", JSON.stringify(documents));\r\n    (0,_update_doc_list__WEBPACK_IMPORTED_MODULE_1__.updatePanelList)(documents);\r\n}\r\n\r\n\r\nfunction appendNewDocument() {\r\n    const documents = JSON.parse(localStorage.getItem(\"markdown-doc-array\")) ||[];\r\n    const newDocumentData = getDocumentData();\r\n    \r\n    documents.unshift(newDocumentData); \r\n    localStorage.setItem(\"markdown-doc-array\", JSON.stringify(documents));\r\n\r\n    (0,_doc_status__WEBPACK_IMPORTED_MODULE_0__.updateDocumentStatus)(\"saved\")\r\n    ;(0,_update_doc_list__WEBPACK_IMPORTED_MODULE_1__.updatePanelList)(documents)\r\n\r\n    // new markdown document is always the first in document list\r\n    localStorage.setItem(\"current-markdown-index\", 0);\r\n}\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/save-doc.js?");
+
+/***/ }),
+
+/***/ "./src/js/modules/update-doc-list.js":
+/*!*******************************************!*\
+  !*** ./src/js/modules/update-doc-list.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   updatePanelList: () => (/* binding */ updatePanelList)\n/* harmony export */ });\n/* harmony import */ var _load_document__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load-document */ \"./src/js/modules/load-document.js\");\n\r\n\r\nconst asidePanel           = document.querySelector(\"#aside-panel\");\r\nconst documentPanelList    = asidePanel.querySelector(\"#aside-document-list\");\r\nconst newDocument          = asidePanel.querySelector(\"#create-new-document\");\r\n\r\nconst documentNameEditor   = document.querySelector(\".document-name-editor[data-template]\");\r\n\r\n\r\nfunction createDocumentSelector(documentObject, index, documentsArray) {\r\n    const documentElement = documentNameEditor.content.cloneNode(true);\r\n    const input = documentElement.querySelector(\"input\");\r\n    const label = documentElement.querySelector(\"label\");\r\n    const loadBtn = documentElement.querySelector(\"[data-load-doc]\"); \r\n\r\n    const {createdAt, documentName} = documentObject;\r\n\r\n    label.innerText = createdAt;\r\n    input.value = documentName;     \r\n\r\n    loadBtn.addEventListener(\"click\", () => {\r\n        (0,_load_document__WEBPACK_IMPORTED_MODULE_0__.loadDocument)(index)\r\n    });\r\n\r\n\r\n    // renaming document from aside panel\r\n    input.addEventListener(\"blur\", () => {\r\n        const newDocumentName = input.value;\r\n        documentObject.documentName = newDocumentName;\r\n        localStorage.setItem(\"markdown-doc-array\", JSON.stringify(documentsArray));\r\n    });\r\n\r\n    documentPanelList.appendChild(documentElement);\r\n    }\r\n\r\nfunction updatePanelList(documents) {\r\n\r\n    while (documentPanelList.firstChild) {\r\n        documentPanelList.removeChild(documentPanelList.firstChild)\r\n    }\r\n\r\n    documents.forEach(createDocumentSelector);\r\n}\r\n\n\n//# sourceURL=webpack://gulp-startup/./src/js/modules/update-doc-list.js?");
 
 /***/ }),
 
@@ -57,11 +123,40 @@ eval("/**\n * marked v12.0.2 - a markdown parser\n * Copyright (c) 2011-2024, Ch
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/markdown.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/modal.js");
 /******/ 	
 /******/ })()
 ;
