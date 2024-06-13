@@ -12,14 +12,15 @@
     padding: rem(12) rem(43);
 
     background-color: $clr-cta-200;
-    color: currentColor;
+    color: $clr-primary-100;
 
     border: none;
     border-radius: rem(4);
 
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: $clr-cta-100;
     }
 
@@ -30,7 +31,6 @@
         > span {
             display: none;
         }
-
 
         @include mq-min($medium-screen-size) {
             > span {
@@ -44,6 +44,11 @@
     background: none;
     border: none;
     cursor: pointer;
+
+    &__svg-icon:hover {
+        // cta color 200
+        filter: brightness(0) saturate(100%) invert(72%) sepia(55%) saturate(5419%) hue-rotate(330deg) brightness(91%) contrast(97%);
+    }
 }
 
 .burger-menu {
@@ -59,5 +64,10 @@
 
     &[aria-expanded=true] {
         background: $clr-neutral-500 url("/img/icon-close.svg") no-repeat center;;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: $clr-cta-200;
     }
 }

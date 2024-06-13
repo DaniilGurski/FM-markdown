@@ -3,12 +3,11 @@
 /* main */
 .main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
 
     &__section {
         display: flex;
         flex-direction: column;
-        grid-column: span 2;
 
         // input section 
         &:first-child {
@@ -21,20 +20,28 @@
             display: none; 
         }
 
+
         &[data-closed] {
             display: none;
         }
 
         &[data-opened] {
+            grid-column: span 2;
             display: block;
         }
 
 
-        @include mq-min($medium-screen-size) {
+        @include mq-min($medium-screen-size) { 
+            grid-column: auto;
+
             &:last-child {
                 display: block; 
             }
         };
+    }
+
+    @include mq-min($medium-screen-size) {
+        grid-template-columns: 1fr 1fr;
     }
 }
 

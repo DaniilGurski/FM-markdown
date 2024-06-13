@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 
 /* header */
-.header {
+.primary-header {
     container-type: inline-size;
 
     display: flex;
@@ -23,12 +23,12 @@
         display: none;
     }
 
-    &__file-rename-input {
-        width: clamp(rem(84), 14vw, rem(128));
+    &__document-name-editor-input {
+        width: clamp(rem(84), 14vw, rem(238));
     }
 
     @container (inline-size >= #{rem($medium-screen-size)}) {
-        &__file-rename {
+        &__document-name-editor {
             padding-inline: rem(24);
             border-left: 1px solid $clr-neutral-400;
         }

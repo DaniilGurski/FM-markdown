@@ -5,6 +5,7 @@
     justify-content: start;
     align-content: space-between;
 
+    width: min(rem(270), 90%);
     min-height: 100vh;
 
     padding: rem(27) rem(24);
@@ -16,6 +17,10 @@
 
     &__main {
         --gap: #{rem(24)};
+    }
+
+    &__document-list > li {
+        cursor: pointer;
     }
 
     &--opened {
