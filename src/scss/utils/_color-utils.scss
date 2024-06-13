@@ -1,6 +1,10 @@
 @use "../abstracts/" as *;
 
 /* color utilities */
+.clr-primary-100 {
+    color: $clr-primary-100; 
+}
+
 .clr-neutral-400 {
     color: $clr-neutral-400;
 }
@@ -15,6 +19,10 @@
 
 .clr-body-accent {
     color: $clr-body-accent;
+}
+
+.bg-primary-100 {
+    background-color: $clr-primary-100;
 }
 
 .bg-neutral-600 {
