@@ -44,8 +44,9 @@ export function saveDocumentChanges() {
 
     documents.splice(currentDocumentIndex, 1);
     documents.unshift(getDocumentData());
-
+    console.log(documents)
     localStorage.setItem("markdown-doc-array", JSON.stringify(documents));
+
     updatePanelList(documents);
 }
 

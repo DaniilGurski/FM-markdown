@@ -26,6 +26,7 @@ const webpackConfig = {
         menu: "/src/js/menu.js",
         preview: "/src/js/preview.js",
         modal: "/src/js/modal.js",
+        theme: "/src/js/theme.js"
     },
 
     output: {
