@@ -15,7 +15,7 @@
   \************************/
 /***/ (() => {
 
-eval("const asidePanel = document.querySelector(\"#aside-panel\");\r\nconst burger = document.querySelector(\"#burger-menu\")\r\n\r\nburger.addEventListener(\"click\", () => {\r\n    if (burger.getAttribute(\"aria-expanded\") === \"true\") {\r\n        burger.setAttribute(\"aria-expanded\", \"false\");\r\n    } else {\r\n        burger.setAttribute(\"aria-expanded\", \"true\")\r\n    }\r\n\r\n    asidePanel.setAttribute(\"aria-hidden\", burger.getAttribute(\"aria-expanded\") === \"true\" ? \"false\" : \"true\");\r\n    asidePanel.classList.toggle(\"aside--opened\")\r\n});\n\n//# sourceURL=webpack://gulp-startup/./src/js/menu.js?");
+eval("const asidePanel = document.querySelector(\"#aside-panel\");\r\nconst burger = document.querySelector(\"#burger-menu\");\r\nconst createDocBtn = asidePanel.querySelector(\"#create-new-document\");\r\n\r\nburger.addEventListener(\"click\", () => {\r\n    if (burger.getAttribute(\"aria-expanded\") === \"true\") {\r\n        burger.setAttribute(\"aria-expanded\", \"false\");\r\n    } else {\r\n        burger.setAttribute(\"aria-expanded\", \"true\")\r\n    }\r\n\r\n    asidePanel.setAttribute(\"aria-hidden\", burger.getAttribute(\"aria-expanded\") === \"true\" ? \"false\" : \"true\");\r\n    asidePanel.classList.toggle(\"aside--opened\")\r\n});\n\n//# sourceURL=webpack://gulp-startup/./src/js/menu.js?");
 
 /***/ })
 

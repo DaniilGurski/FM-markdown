@@ -1,5 +1,6 @@
 const asidePanel = document.querySelector("#aside-panel");
-const burger = document.querySelector("#burger-menu")
+const burger = document.querySelector("#burger-menu");
+const createDocBtn = asidePanel.querySelector("#create-new-document");
 
 burger.addEventListener("click", () => {
     if (burger.getAttribute("aria-expanded") === "true") {

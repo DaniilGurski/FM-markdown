@@ -16,8 +16,10 @@ function createDocumentSelector(documentObject, index, documentsArray) {
     const {createdAt, documentName} = documentObject;
 
     label.innerText = createdAt;
-    input.value = documentName;     
+    input.value = documentName;    
 
+
+    // load document from aside panel by clicking on doc icon
     loadBtn.addEventListener("click", () => {
         loadDocument(index)
     });
