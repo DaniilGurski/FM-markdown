@@ -7,6 +7,13 @@ html {
 
 
 body {
+    --clr-markdown-header: var(--clr-primary-200);
+    --clr-section-devider: var(--clr-neutral-100);
+    --clr-app-bg: var(--clr-primary-100);
+    --clr-markdown-code: var(--clr-neutral-500);
+    --clr-markdown-preview:   var(--clr-neutral-300);
+    --clr-markdown-accent: var(--clr-markdown-code);
+
     position: relative;
     overflow-x: hidden;
 
@@ -26,9 +33,12 @@ body {
 
 
 .dark-mode {
+    --clr-section-devider: var(--clr-neutral-400);
+    --clr-markdown-header: var(--clr-neutral-700);
     --clr-app-bg: var(--clr-neutral-800);
-    --clr-body-accent: var(--clr-primary-100);
-    --clr-body-default: var(--clr-neutral-200);
+    --clr-markdown-code: var(--clr-neutral-200);
+    --clr-markdown-preview: var(--clr-neutral-200);
+    --clr-markdown-accent: var(--clr-primary-100);
     --clr-text-block-bg: var(--clr-neutral-600);
 }
 
@@ -41,7 +51,6 @@ body {
     flex: 1;
 
     overflow-y: scroll;
-
 }
 
 
@@ -52,7 +61,7 @@ body {
     padding: rem(24) rem(32);
 
     background-color: $clr-text-block-bg;
-    color: $clr-body-accent;
+    color: $clr-markdown-accent;
 
     border-radius: rem(4);
 
@@ -64,7 +73,7 @@ body {
 
 .inline-code {
     font-family: $font-family-markdown;
-    color: $clr-body-accent;
+    color: $clr-markdown-code;
 }
 
 
@@ -76,8 +85,8 @@ body {
         align-items: center;
         justify-content: space-between;
 
-        background-color: $clr-primary-200;
-        color: $clr-neutral-300;
+        background-color: $clr-markdown-header;
+        color: $clr-markdown-preview;
         padding: rem(12) rem(16);
 
 
@@ -110,7 +119,8 @@ body {
             }
 
 
-            &:hover {
+            &:hover,
+            &:focus {
                 // cta color 200
                 filter: brightness(0) saturate(100%) invert(72%) sepia(55%) saturate(5419%) hue-rotate(330deg) brightness(91%) contrast(97%);
             }
@@ -121,11 +131,3 @@ body {
         }
     }
 }
-
-
-.showcase {
-    padding-block: 2rem;
-    display: grid;
-    gap: 2rem;
-}
-

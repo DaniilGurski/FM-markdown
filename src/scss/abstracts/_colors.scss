@@ -20,8 +20,6 @@ $colors: (
 );
 
 
-
-
 $clr-primary-200: var(--clr-primary-200);
 $clr-primary-100: var(--clr-primary-100);
 
@@ -37,11 +35,13 @@ $clr-neutral-100: var(--clr-neutral-100);
 $clr-cta-200: var(--clr-cta-200);
 $clr-cta-100: var(--clr-cta-100);
 
+$clr-section-devider: var(--clr-section-devider);
+$clr-markdown-header: var(--clr-markdown-header);
 $clr-app-bg: var(--clr-app-bg);
-$clr-body-default: var(--clr-body-default);    // for the markdown preview
-$clr-body-accent: var(--clr-body-accent);      // for the code 
+$clr-markdown-preview: var(--clr-markdown-preview);    // for the markdown preview
+$clr-markdown-code: var(--clr-markdown-code);      // for the code 
+$clr-markdown-accent: var(--clr-markdown-accent);
 $clr-text-block-bg: var(--clr-text-block-bg);
-
 
 
 

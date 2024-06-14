@@ -61,7 +61,11 @@
     resize: none;
     border: none;
 
-    padding: rem(8) rem(16);
+    padding: 1rem;
+    background-color: $clr-app-bg;
+    color: $clr-markdown-code;
+
+    overflow-y: hidden;
 
 
     &:focus {

@@ -45,7 +45,8 @@
     border: none;
     cursor: pointer;
 
-    &__svg-icon:hover {
+    &__svg-icon:hover,
+    &:focus-within {
         // cta color 200
         filter: brightness(0) saturate(100%) invert(72%) sepia(55%) saturate(5419%) hue-rotate(330deg) brightness(91%) contrast(97%);
     }

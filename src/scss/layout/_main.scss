@@ -12,7 +12,7 @@
         // input section 
         &:first-child {
             line-height: $line-spacing;
-            border-right: 2px solid $clr-neutral-100;
+            border-right: 2px solid $clr-section-devider;
         }
 
         // preview section
@@ -25,6 +25,7 @@
             display: none;
         }
 
+        
         &[data-opened] {
             grid-column: span 2;
             display: block;

@@ -7,7 +7,7 @@
 
 @for $n from 1 through 6 {
     $heading-weight: $font-weight-bold;
-    $heading-color:  $clr-body-accent;
+    $heading-color:  $clr-markdown-accent;
 
     @if $n == 2 {
         $heading-weight: $font-weight-light;
