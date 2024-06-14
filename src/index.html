@@ -7,113 +7,129 @@
     <!-- styles -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- scripts -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
-    <script src="js/markdown.bundle.js" type="module" defer></script>
+    <script src="js/main.bundle.js" defer></script>
     <script src="js/menu.bundle.js" defer></script>
     <script src="js/preview.bundle.js" defer></script>
+    <script src="js/modal.bundle.js" defer></script>
+    <script src="js/theme.bundle.js" defer></script>
     
     <title> Markdown </title>
 </head>
-<body> 
+<body class="dark-mode"> 
+    <div class="main-flex-container">
+        <div class="app-main" id="app-container">
+            <header class="primary-header" id="primary-header">
+                <div class="primary-header__left-corner">
+                    <button class='burger-menu' id='burger-menu' aria-expanded='false' aria-controls='aside-panel' type="button">
+                        <span class='visually-hidden'>Menu</span>
+                    </button>
 
-    <div class="app-main">
-        <header class="header">
-            <div class="header__left-corner">
-                <button class='burger-menu' aria-expanded='false' aria-controls='primary-nav' id='burger-menu'>
-                    <span class='visually-hidden'>Menu</span>
-                </button>
+                    <img class="primary-header__logo" src="img/logo.svg" alt="logo">
 
-                <img class="header__logo" src="img/logo.svg" alt="logo">
-
-                <div class="file-rename">
-                    <img src="img/icon-document.svg" alt="document">
-                    <div class="file-rename__interactable file-rename__interactable--foldable | grid">
-                        <label for="file-renname"> Document Name </label>
-                        <input class="header__file-rename-input file-rename__input" id="file-rename" type="text">
+                    <div class="document-name-editor">
+                        <img src="img/icon-document.svg" alt="document">
+                        <div class="document-name-editor__interactable document-name-editor__interactable--foldable | grid">
+                            <label for="document-name-editor"> Document Name </label>
+                            <input class="primary-header__document-name-editor-input document-name-editor__input" id="document-name" type="text">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="header__right-corner">
-                <button class="icon-button">
-                    <span class='visually-hidden'>Delete</span>
-                    <img src="img/icon-delete.svg" alt="delete">
-                </button>
-
-                <button class="button button--icon">
-                    <img src="/img/icon-save.svg" alt="save">
-                    <span> Save Changes </span>
-                </button>
-            </div>
-        </header>
-
-        <main class="main">
-            <section class="main__section | clr-body-accent" id="input-section">
-                <header class="markdown-section-header">
-                    <span class="font-weight-medium"> MARKDOWN </span>
-    
-                    <button class="markdown-section-header__toggle-preview" data-toggle="show" data-from="input">
-                        <span class="visually-hidden"> Toggle preview </span>
+                <div class="primary-header__right-corner">
+                    <button class="icon-button" id="remove-document-btn" type="button">
+                        <span class='visually-hidden'>Delete</span>
+                        <img class="icon-button__svg-icon" src="img/icon-delete.svg" alt="delete">
                     </button>
-                </header>
 
-                <textarea class="markdown-input-area font-markdown | font-size-200" id="markdown-input-area"></textarea>
-            </section>
-            
-            <section class="main__section | clr-body-default" id="preview-section">
-                <header class="markdown-section-header">
-                    <span class="font-weight-medium"> PREVIEW </span>
-                    
-                    <button class="markdown-section-header__toggle-preview" data-toggle="hide" data-from="preview">
-                        <span class="visually-hidden"> Toggle preview </span>
+                    <button class="button button--icon" id="save-document" type="button">
+                        <img src="/img/icon-save.svg" alt="save">
+                        <span> Save Changes </span>
                     </button>
-                </header>
-
-                <div class="preview | grid | font-preview | font-size-200" id="preview-box">
                 </div>
-            </section>
-        </main>
-    </div>
+            </header>
 
-    <aside class="aside | bg-neutral-600" id="aside-panel">
+            <main class="main" id="main">
+                <section class="main__section | clr-markdown-code" id="input-section">
+                    <header class="markdown-section-header">
+                        <span class="font-weight-medium"> MARKDOWN </span>
         
-        <div class="aside__top | grid">
+                        <button class="markdown-section-header__toggle-preview" data-toggle="show" data-from="input">
+                            <span class="visually-hidden"> Toggle preview </span>
+                        </button>
+                    </header>
 
-            <img class="aside__logo" src="img/logo.svg" alt="logo">
+                    <textarea class="markdown-input-area font-markdown | font-size-200" id="markdown-input-area" spellcheck="false"></textarea>
+                </section>
+                
+                <section class="main__section | clr-markdown-preview" id="preview-section">
+                    <header class="markdown-section-header">
+                        <span class="font-weight-medium"> PREVIEW </span>
+                        
+                        <button class="markdown-section-header__toggle-preview" data-toggle="hide" data-from="preview">
+                            <span class="visually-hidden"> Toggle preview </span>
+                        </button>
+                    </header>
 
-            <div class="aside__main | grid">
-                <span class="clr-neutral-300"> MY DOCUMENTS </span>
-
-                <button class="button"> + New Document </button>
-
-                <div class="file-rename">
-                    <img src="/img/icon-document.svg" alt="document">
-                    <div class="file-rename__interactable | grid">
-                        <label for="file-renname"> 01 April 2022 </label>
-                        <input class="file-rename__input" id="file-rename" type="text" value="untitled-document.md">
+                    <div class="preview | grid | font-preview | font-size-200" id="preview-box">
                     </div>
-                </div>
+                </section>
+            </main>
+        </div>
 
-                <div class="file-rename">
-                    <img src="/img/icon-document.svg" alt="document">
-                    <div class="file-rename__interactable | grid">
-                        <label for="file-renname"> 01 April 2022 </label>
-                        <input class="file-rename__input" id="file-rename" type="text" value="welcome.md">
-                    </div>
+        <aside class="aside | bg-neutral-600" id="aside-panel" aria-hidden="true">
+            
+            <div class="aside__top | grid">
+                <img class="aside__logo" src="img/logo.svg" alt="logo">
+
+                <div class="aside__main | grid">
+                    <span class="clr-neutral-300"> MY DOCUMENTS </span>
+
+                    <button class="button" id="create-new-document"> + New Document </button>
+
+                    <ul class="aside__document-list | unmarked-list" id="aside-document-list">
+                        <!-- TODO: ARIA-->
+                    </ul>
                 </div>
             </div>
+
+            <div class="toggle-component">
+                <img src="/img/icon-dark-mode.svg" alt="dark mode">
+                <!-- TOOD: Snippet -->
+                <input class="toggle" id="theme-toggle" type="checkbox" aria-label="change to light theme">
+                <img src="/img/icon-light-mode.svg" alt="light mode">
+            </div>
+        </aside>
+    </div>
+    
+    <dialog class="modal" id="modal"> 
+        <div class="grid">
+            <h4 class="clr-neutral-500">Delete this document?</h4>
+            <p class="clr-neutral-300">
+                Are you sure you want to delete the <span id="remove-document-name">'DOCUMENT NAME'</span> document and its contents? This action cannot be reversed.
+            </p>
+
+            <div class="grid">
+                <button class="button button--no-icon modal__button" id="confirm-doc-removal" data-close-modal type="button">
+                    Confirm & Delete
+                </button>
+                <button class="button button--no-icon modal__button" data-close-modal type="button">
+                    Cancel
+                </button>
+            </div>
         </div>
+    </dialog>
 
-        <div class="toggle-component">
-            <img src="/img/icon-dark-mode.svg" alt="dark mode">
-            <!-- TOOD: Snippet -->
-            <input class="toggle" id="mode-switch" type="checkbox" aria-label="change to dark mode">
-            <img src="/img/icon-light-mode.svg" alt="light mode">
-        </div>
-
-    </aside>
-
-
+    <template class="document-name-editor" data-template>
+        <li class="document-name-editor">
+            <button class="icon-button" data-load-doc type="button">
+                <span class="visually-hidden">Load document</span>
+                <img src="/img/icon-document.svg" alt="document">
+            </button>
+            <div class="document-name-editor__interactable | grid">
+                <label class="document-creation-date"for="document-name-editor"> 01 April 2022 </label>
+                <input class="document-name-editor__input document-name-editor__input--aside" type="text" value="untitled-document.md">
+            </div>
+        </li>
+    </template> 
 </body>
 </html>
