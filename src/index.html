@@ -37,12 +37,12 @@
 
                 <div class="primary-header__right-corner">
                     <button class="icon-button" id="remove-document-btn" type="button">
-                        <span class='visually-hidden'>Delete</span>
-                        <img class="icon-button__svg-icon" src="img/icon-delete.svg" alt="delete">
+                        <span class='visually-hidden'>Delete document</span>
+                        <img class="icon-button__svg-icon" src="img/icon-delete.svg" alt="delete document" aria-hidden="true">
                     </button>
 
                     <button class="button button--icon" id="save-document" type="button">
-                        <img src="/img/icon-save.svg" alt="save">
+                        <img src="/img/icon-save.svg" alt="save" aria-hidden="true">
                         <span> Save Changes </span>
                     </button>
                 </div>
@@ -58,7 +58,7 @@
                         </button>
                     </header>
 
-                    <textarea class="markdown-input-area font-markdown | font-size-200" id="markdown-input-area" spellcheck="false"></textarea>
+                    <textarea class="markdown-input-area font-markdown | font-size-200" id="markdown-input-area" aria-label="markdown editor" spellcheck="false"></textarea>
                 </section>
                 
                 <section class="main__section | clr-markdown-preview" id="preview-section">
@@ -87,20 +87,18 @@
                     <button class="button" id="create-new-document"> + New Document </button>
 
                     <ul class="aside__document-list | unmarked-list" id="aside-document-list">
-                        <!-- TODO: ARIA-->
                     </ul>
                 </div>
             </div>
 
             <div class="toggle-component">
                 <img src="/img/icon-dark-mode.svg" alt="dark mode">
-                <!-- TOOD: Snippet -->
-                <input class="toggle" id="theme-toggle" type="checkbox" aria-label="change to light theme">
+                <input class="toggle" id="theme-toggle" type="checkbox" aria-label="change page theme">
                 <img src="/img/icon-light-mode.svg" alt="light mode">
             </div>
         </aside>
     </div>
-    
+
     <dialog class="modal" id="modal"> 
         <div class="grid">
             <h4 class="clr-neutral-500">Delete this document?</h4>
@@ -120,7 +118,7 @@
     </dialog>
 
     <template class="document-name-editor" data-template>
-        <li class="document-name-editor">
+        <li class="document-name-editor" aria-label="load / rename document">
             <button class="icon-button" data-load-doc type="button">
                 <span class="visually-hidden">Load document</span>
                 <img src="/img/icon-document.svg" alt="document">
