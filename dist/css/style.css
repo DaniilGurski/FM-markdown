@@ -95,10 +95,6 @@ p {
   --fs-300: 0.9375rem;
   --fs-200: 0.875rem;
   --fs-100: 0.8125rem;
-  --clr-app-bg: var(--clr-primary-100);
-  --clr-body-accent: var(--clr-neutral-500);
-  --clr-body-default: var(--clr-neutral-300);
-  --clr-text-block-bg: var(--clr-primary-200);
 }
 
 /* general */
@@ -198,12 +194,6 @@ body {
 }
 .markdown-section-header > span {
   letter-spacing: 2px;
-}
-
-.showcase {
-  padding-block: 2rem;
-  display: grid;
-  gap: 2rem;
 }
 
 /* font face */
