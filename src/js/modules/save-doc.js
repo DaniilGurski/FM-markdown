@@ -1,4 +1,5 @@
 import { getDocumentStatus, updateDocumentStatus } from "./doc-status";
+import { getCurrentDocumentIndex, getCurrentDocList } from "./utils";
 import { updatePanelList } from "./update-doc-list";
 
 const primaryHeader = document.querySelector("#primary-header");
@@ -38,13 +39,12 @@ export function getDocumentData() {
 }
 
 export function saveDocumentChanges() {
-    let documents = JSON.parse(localStorage.getItem("markdown-doc-array")) || [];
+    let documents = getCurrentDocList();
 
-    const currentDocumentIndex = parseInt(localStorage.getItem("current-markdown-index")); 
+    const currentDocumentIndex = getCurrentDocumentIndex(); 
 
     documents.splice(currentDocumentIndex, 1);
     documents.unshift(getDocumentData());
-    console.log(documents)
     localStorage.setItem("markdown-doc-array", JSON.stringify(documents));
 
     updatePanelList(documents);

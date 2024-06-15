@@ -2,6 +2,7 @@ const { createNewDocument } = require("./modules/create-document");
 const { getDocumentStatus } = require("./modules/doc-status");
 const { updatePanelList } = require("./modules/update-doc-list");
 const { getDocumentName } = require("./modules/save-doc");
+const { getCurrentDocumentIndex } = require("./modules/utils");
 
 const removeDocumentBtn = document.querySelector("#remove-document-btn");
 const modal = document.querySelector("#modal");
@@ -28,7 +29,7 @@ confirmDocumentRemoval.addEventListener("click", () => {
     const currentDocStatus = getDocumentStatus(); 
 
     if (currentDocStatus === "saved") {
-        const currentDocIndex = parseInt(localStorage.getItem("current-markdown-index")); 
+        const currentDocIndex = getCurrentDocumentIndex();; 
         const documents = JSON.parse(localStorage.getItem("markdown-doc-array")); 
 
         documents.splice(currentDocIndex, 1);

@@ -4,8 +4,9 @@ import { createNewDocument } from "./modules/create-document";
 import { formatToMarkdown } from "./modules/markdown";
 import { getDocumentData, appendNewDocument, saveDocumentChanges } from "./modules/save-doc";
 import { loadDocument } from "./modules/load-document";
+import { getCurrentDocumentIndex, getCurrentDocList } from "./modules/utils";
 
-let documents = JSON.parse(localStorage.getItem("markdown-doc-array")) || [];
+let documents = getCurrentDocList();
 const appContainer  = document.querySelector("#app-container");
 const asidePanel    = document.querySelector("#aside-panel");
 const primaryHeader = document.querySelector("#primary-header");
@@ -29,13 +30,10 @@ saveDocument.addEventListener("click", () => {
 
 
 window.addEventListener("load", () => {
-    const currentDocumentIndex = parseInt(localStorage.getItem("current-markdown-index"));
+    const currentDocumentIndex = getCurrentDocumentIndex();;
 
     updatePanelList(documents);
     loadDocument(currentDocumentIndex);
 
     appContainer.setAttribute("data-new-doc", getDocumentStatus());
 })
-
-
-// TODO: move changed doc to top with splice() (removes items from x to y and returns them as an array)
