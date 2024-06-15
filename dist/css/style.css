@@ -109,6 +109,7 @@ body {
   --clr-markdown-code: var(--clr-neutral-500);
   --clr-markdown-preview: var(--clr-neutral-300);
   --clr-markdown-accent: var(--clr-markdown-code);
+  --clr-text-block-bg: var(--clr-primary-200);
   position: relative;
   overflow-x: hidden;
   font-family: "roboto", sans-serif;
