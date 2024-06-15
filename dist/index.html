@@ -16,10 +16,10 @@
     <title> Markdown </title>
 </head>
 <body class="dark-mode"> 
-    <h1 class="visually-hidden">markdown-editor</h1>
     <div class="main-flex-container">
         <div class="app-main" id="app-container">
             <header class="primary-header" id="primary-header">
+                <h1 class="visually-hidden">markdown-editor</h1>
                 <div class="primary-header__left-corner">
                     <button class='burger-menu' id='burger-menu' aria-expanded='false' aria-controls='aside-panel' type="button">
                         <span class='visually-hidden'>Menu</span>
@@ -30,7 +30,7 @@
                     <div class="document-name-editor">
                         <img src="img/icon-document.svg" alt="document">
                         <div class="document-name-editor__interactable document-name-editor__interactable--foldable | grid">
-                            <label for="document-name-editor"> Document Name </label>
+                            <label for="document-name"> Document Name </label>
                             <input class="primary-header__document-name-editor-input document-name-editor__input" id="document-name" type="text">
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                 <img src="/img/icon-document.svg" alt="document">
             </button>
             <div class="document-name-editor__interactable | grid">
-                <label class="document-creation-date"for="document-name-editor"> 01 April 2022 </label>
-                <input class="document-name-editor__input document-name-editor__input--aside" type="text" value="untitled-document.md">
+                <label class="document-creation-date"for="document-name"> 01 April 2022 </label>
+                <input class="document-name-editor__input document-name-editor__input--aside" type="text" value="untitled-document.md" id="document-name">
             </div>
         </li>
     </template> 
